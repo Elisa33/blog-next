@@ -1,4 +1,8 @@
 @tailwind base;
+.dropdown:hover .dropdown-menu {
+	display: flex;
+  }
+  
 @tailwind components;
 
 

@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 export default function Layout({children, title, description}) {
     return (
-        <div>
+        <div className="text-base antialiased font-dm-sans">
             <Head>
                 <title>{title}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -13,8 +13,11 @@ export default function Layout({children, title, description}) {
                 <meta name="keywords" content="palabra clave 1, palabra clave 2, palabra clave 3"/>
             </Head>
             <Nav/>
-            <main>
+            <main className="pt-24 text-black wrapper bg-medium-white dark:bg-black dark:text-light-gray">
+           
+
                 {children}
+          
             </main>
             <Footer/>
         </div>

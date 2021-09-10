@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Nav() {
+
+    const [menu, setMenu] = useState(false)
+
+    const handleClick = ()=>{
+        setMenu(!menu)
+    }
     return (
         
 	<header className="fixed z-10 w-full text-sm text-black bg-medium-white dark:bg-black dark:text-light-gray" id="top">
@@ -17,19 +24,23 @@ export default function Nav() {
                         alt="" />
                     </a>
                 </Link>            
-                <div className="items-center justify-center mobile-menu-btn focus:outline-none " aria-expanded="false">
+                <div className="items-center justify-center focus:outline-none " onClick={handleClick} aria-expanded="false">
                     <span className="sr-only">Abrir menú</span>
-                    <Image className="block w-10 h-10 menu-opened" width={40} height={40} src="/img/svg/menu.svg" alt="icono abrir menu"></Image>
-                    <Image className="hidden w-9 h-9 menu-closed" width={36} height={36} src="/img/svg/close.svg" alt="icono cerrar menu"></Image>
+                    {menu ? 
+                     
+                    <Image className="hidden w-9 h-9" width={40} height={40} src="/img/svg/close.svg" alt="icono cerrar menu"></Image> :
+                    <Image  className="block w-10 h-10" width={40} height={40} src="/img/svg/menu.svg" alt="icono abrir menu"></Image>
+                }
                 </div>
 
 				<label htmlFor="search" className="flex items-center justify-between px-5 rounded-lg h-9 text-md text-light-black focus-within:text-gray bg-light-white w-72">
-					 <input type="text" name="search" id="search" placeholder="Buscar" className=""></input>
+					 <input type="text" name="search" id="search" placeholder="Buscar" className="bg-light-white"></input>
 					<Image src="/img/svg/glass.svg" width={20} height={20} className="w-5 h-5 transform pointer-events-none " />
 			   </label>
 
             </div>
-            <div className="absolute z-20 flex flex-col justify-between w-full min-h-screen gap-4 p-6 sm:w-96 bg-medium-white mobile-menu xl:hidden oculto dark:bg-black">
+            {menu && 
+            <div className="absolute z-20 flex flex-col justify-between w-full min-h-screen gap-4 p-6 sm:w-96 bg-medium-white xl:hidden dark:bg-black">
                 <nav className="flex flex-col justify-start gap-4">
 					<a className="nav-link" href="/">Home</a>
 					<div className="relative flex flex-col dropdown">
@@ -57,7 +68,7 @@ export default function Nav() {
 					</div>
 					<button className="self-start p-2 text-white rounded-sm bg-blue hover:shadow-md">Suscribirse</button>
 				</div>
-            </div>
+            </div>}
         </div>
         {/* Desktop Menu */}
         <div className="items-center justify-between hidden h-16 gap-8 xl:flex wrapper">
@@ -66,7 +77,6 @@ export default function Nav() {
 				<nav className="gap-6 text-sm tracking-widest text-gray mobile-menu xl:flex">
 					<a className="nav-link" href="/">Home</a>
 					<a className="nav-link" href="/categorias">Categorías</a>
-					<p>prueba</p>
 					<div className="relative flex flex-col dropdown">
 						<button className="flex items-center">
 						  <span className="nav-link">Dropdown</span>

@@ -1,7 +1,9 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'media', // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       "colors": {
@@ -25,8 +27,8 @@ module.exports = {
        "xl": "2.25rem"
       },
       "fontFamily": {
-       "dm-sans": "DM Sans",
-       "roboto": "Roboto"
+       "dm-sans": ['DM Sans', ...defaultTheme.fontFamily.sans],
+       "roboto": ['Roboto', ...defaultTheme.fontFamily.sans]
       },
       "borderRadius": {
        "none": "0",
