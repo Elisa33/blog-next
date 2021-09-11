@@ -2,7 +2,9 @@ import Image from 'next/image'
 export default function Footer() {
     return (
         <footer className="grid grid-cols-4 gap-8 text-black pb-14 sm:grid-cols-3 lg:grid-cols-4 wrapper bg-medium-white dark:bg-black dark:text-light-gray">
-		<Image className="self-center col-span-4 justify-self-center sm:col-span-3 lg:col-span-1 lg:order-4" width={156} height={156} src="/img/logo-xl.jpg" alt="logotipo"/>
+		<div className="self-center col-span-4 justify-self-center sm:col-span-3 lg:col-span-1 lg:order-4">
+			<Image className="" width={156} height={156} src="/img/logo-xl.jpg" alt="logotipo"/>
+		</div>
 		<div className="flex flex-col col-span-2 gap-3 sm:col-span-1 lg:col-span-1 lg:order-1" >
 			<h3 className="h3">Navegación</h3>
 			<a href="" className="link">Item</a>
